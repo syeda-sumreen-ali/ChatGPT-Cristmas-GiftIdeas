@@ -52,11 +52,9 @@ export default function Home() {
           <label>Occasion</label>
           <input
             type="text"
-            min={1}
-            max={99}
             name="occasion"
             placeholder="Enter the occasion"
-            value={age}
+            value={occasion}
             onChange={(e) =>setOccasion(e.target.value)}
           />
           <select
