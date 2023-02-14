@@ -2,9 +2,11 @@ import Head from 'next/head';
 import React from 'react';
 import { useState } from 'react';
 import styles from './index.module.css';
-
+// import Loader from '../asset/loader.gif'
 export default function Home() {
   const [gender, setGender] = useState('man');
+  const [occasion, setOccasion] = useState('chirstmas');
+
   const [age, setAge] = useState(30);
   const [priceMin, setPriceMin] = useState(25);
   const [priceMax, setPriceMax] = useState(100);
@@ -25,7 +27,7 @@ export default function Home() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ priceMin, priceMax, gender, age, hobbies }),
+      body: JSON.stringify({ occasion, priceMin, priceMax, gender, age, hobbies }),
     });
     const data = await response.json();
     console.log(data)
@@ -44,9 +46,19 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h3>Christmas gift generator 🎁 💡</h3>
+        <h3> gift generator 🎁 💡</h3>
         <form onSubmit={onSubmit}>
           <label>For who is the gift?</label>
+          <label>Occasion</label>
+          <input
+            type="text"
+            min={1}
+            max={99}
+            name="occasion"
+            placeholder="Enter the occasion"
+            value={age}
+            onChange={(e) =>setOccasion(e.target.value)}
+          />
           <select
             name="gender"
             value={gender}
@@ -101,7 +113,7 @@ export default function Home() {
           <div>
             <h3>Looking for the best gift ideas 🎁 💡</h3>
             <p>loading....</p>
-            {/* <img src="/loading.webp" className={styles.loading} /> */}
+            <img src="/loader.gif" className={styles.loading} />
           </div>
         )}
         <div

@@ -15,8 +15,8 @@ export default async function (req, res) {
     return;
   }
 
-  const {priceMin, priceMax, gender, age, hobbies} = req.body
-  const prompt= generatePrompt(priceMin, priceMax, gender, age, hobbies)
+  const {occasion, priceMin, priceMax, gender, age, hobbies} = req.body
+  const prompt= generatePrompt(occasion,priceMin, priceMax, gender, age, hobbies)
 
   console.log("prompt=======", prompt)
 
@@ -44,6 +44,6 @@ export default async function (req, res) {
   }
 }
 
-function generatePrompt(priceMin, priceMax, gender, age, hobbies) {
-  return `suggest 3 Christmas gift ideas between ${priceMin}$ and ${priceMax}$ for a ${age} years old ${gender} that is into ${hobbies}`;
+function generatePrompt(occasion, priceMin, priceMax, gender, age, hobbies) {
+  return `suggest 3 ${occasion} gift ideas between ${priceMin}$ and ${priceMax}$ for a ${age} years old ${gender} that is into ${hobbies}`;
 }
